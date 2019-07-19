@@ -1,0 +1,20 @@
+{
+  "name": "Youtube_Bot",
+  "version": "0.0.1",
+  "description": "Our YouTube tutorial bot!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "discord.js": "^11.5.1"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/youtube-discord-bot"
+  },
+  "license": "ISC"
+}
