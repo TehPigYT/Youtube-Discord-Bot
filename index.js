@@ -33,7 +33,7 @@ bot.on("message", async message => {
     .setColor("RANDOM")//This is my choice, but embeds support hex colors, too! If you want to input a certain color, here's what you have to need That's it!
     .setThumbnail(bot.user.avatarURL)
     .addField("Username:", bot.user.username, true)//adding fields with information about the bot
-    .addField("Nickname:", bot.user.nickname || "None")
+    .addField("Nickname:", bot.user.nickname || "None", true)//forgot to put this in the video
     .addField("ID:", bot.user.id, true)
     .addField("Discriminator:", bot.user.discriminator, true)
     .addField("Created At:", bot.user.createdAt.toDateString(), true)
