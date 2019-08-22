@@ -15,7 +15,7 @@ const bot = new Discord.Client({ disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`[CONSOLE] ${bot.user.tag} has now logged in on Discord and watching ${bot.guilds.size} guilds, with ${bot.users.size} users and ${bot.channels.size} channels!`)
-  bot.user.setActivity("TechPig_YT's tutorials!", { type: "WATCHING"})
+  bot.user.setActivity("TechPig's tutorials!", { type: "WATCHING"})
 })//when it is on
 
 bot.on("message", async message => {
