@@ -1,10 +1,11 @@
 const Discord = require("discord.js");
-
-module.exports.run = async (bot, message, args) => {
-  //now, to test the command handler, we're going to make this test command here
-  message.channel.send("Hello there! What do you want to test exactly?");
+//constructing the command handler
+module.exports.run = async (bot, message, args) => {//no need to type all of the specified items
+  
+  message.channel.send("Hello there!")
 }
 
 module.exports.help = {
-  name: "test"
-}
+  name: "test"//the name of the command, in which the bot will respond
+}//you don't have to do this step
+//time to test it!
