@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
   
-  let embed = new Discord.RichEmbed()//we're going to make it the same way
+    let embed = new Discord.RichEmbed()//we're going to make it the same way
     .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription("Here's some information about this server!")
     .setColor("RANDOM")
