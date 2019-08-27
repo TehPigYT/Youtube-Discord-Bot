@@ -12,21 +12,21 @@ setInterval(() => {
 
 const Discord = require("discord.js");
 const botconfig = require("./botconfig.json");
-const fs = require("fs");//the package we're going to use ofr the handler
+const fs = require("fs");//the needed package for the handler
 const bot = new Discord.Client({ disableEveryone: true});
 bot.commands = new Discord.Collection();//defining the commands
 
 fs.readdir("./commands/", (err, files) => {//reading the directory of the command files
-  if(err) console.log(err.message);//if we get any errors
-  let jsfile = files.filter(f => f.split(".").pop() === "js");//getting the command files
-  if(jsfile.length <= 0) return console.log("There are no command file to load.");//if there are no command files
+  if(err) console.log(err.message)//if we get an error with it
+  let jsfile = files.filter(f => f.split(".").pop() === "js");//regognising the file types
+  if(jsfile.length <= 0) return console.log("There are no command files to load into the bot.");
   
-  console.log(`[CONSOLE] Loading ${jsfile.length} commands...`);//the amount of the commands that it's going to load into the bot
+  console.log(`Loading ${jsfile.length} commands...`)//getting the files
   
-  jsfile.forEach((f, i) => {
+  jsfile.forEach((f, i) => {//each command file
     let props = require(`./commands/${f}`);//getting each file
-    console.log(`[CONSOLE] ${i + 1}: ${f} file has been successfully loaded into the bot!`);//sending an output when the files are being loaded
-    bot.commands.set(props.help.name, props);//setting the commands
+    console.log(`${i + 1}: ${f} file has been successfully loaded into the bot!`);
+    bot.commands.set(props.help.name, props);
   });
 });
 
@@ -41,13 +41,16 @@ bot.on("message", async message => {
   
   let prefix = botconfig.prefix;//geting the prefix
   if(!message.content.startsWith(prefix)) return; //if there's not the specified prefix in the start of the message
-
-  let messageArray = message.content.split(" ");//getting the message
-  let cmd = messageArray[0];//recognising the command
+  
+  let messageArray = message.content.split(" ");//getting the message we send
+  let cmd = messageArray[0];//seperating the command
   let args = messageArray.slice(1);//we'll need this for later
   
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+  let commandfile = bot.commands.get(cmd.slice(prefix.length));//getting the commands
   if(commandfile) commandfile.run(bot, message, args, prefix);
+  
+  //now, we're done with the command handler
+  //let's make a command to test it!
 })
 
 bot.login(process.env.TOKEN)//to log in
