@@ -17,9 +17,13 @@ const bot = new Discord.Client({ disableEveryone: true});
 bot.commands = new Discord.Collection();//defining the commands
 
 fs.readdir("./commands/", (err, files) => {//reading the directory of the command files
-  if(err) console.log(err.message)//if we get an error with it
-  let jsfile = files.filter(f => f.split(".").pop() === "js");//regognising the file types
-  if(jsfile.length <= 0) return console.log("There are no command files to load into the bot.");
+  let i = [];
+  try{
+    let jsfile = files.filter(f => f.split(".").pop() === "js");
+    i = jsfile
+  } catch(e) {
+    return console.log("[ERROR] No command files detected to load into the bot.\nAdd some by creating a new file in command/(command name)");
+  }
   
   console.log(`Loading ${jsfile.length} commands...`)//getting the files
   
